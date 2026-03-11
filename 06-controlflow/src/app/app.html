@@ -1,0 +1,13 @@
+<h1>If Else| Control flow</h1>
+@if(display){
+  <div style="width: 200px; height: 200px; background-color: green;"></div>
+}
+<button (click)="hide()">hide</button>
+<button (click)="show()">show</button>
+<button (click)="toogle()">toogle</button>
+
+<div>
+@for(user of users; track user; let id=$index){
+  <h2><span>{{id+1}}</span>{{user}}</h2>
+}
+</div>
