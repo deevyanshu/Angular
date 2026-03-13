@@ -1,0 +1,14 @@
+<h1 *ngIf="show">show</h1>
+<h2 *ngFor="let student of students">{{student}}</h2>
+<div *ngIf="login;else elseBlock">
+<a>logout</a>
+</div>
+<ng-template #elseBlock>
+  <a>login</a>
+</ng-template>
+
+<div [ngSwitch]="color">
+  <h2 *ngSwitchCase="'red'" style="background-color: red;">red</h2>
+  <h2 *ngSwitchCase="'blue'" style="background-color: blue;">blue</h2>
+  <h2 *ngSwitchCase="'green'" style="background-color: green;">green</h2>
+</div>
