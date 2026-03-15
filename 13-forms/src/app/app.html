@@ -1,0 +1,25 @@
+<!-- <h1>Reactive forms</h1>
+<form action="">
+  <input type="text" placeholder="entername" [formControl]="name">
+  <br>
+  <br>
+  <input type="password" placeholder="password" [formControl]="password">
+  <br>
+  <br>
+  <button type="button" (click)="displayValue()">login</button>
+  <button type="button" (click)="setValue()">set</button>
+  <h3>{{name.value}}</h3>
+</form> -->
+<h1>Reactive forms</h1>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <input type="text" placeholder="entername" formControlName="name">
+  <span *ngIf="name?.hasError('required')">Name is required</span>
+  <span *ngIf="name?.invalid &&(name?.dirty || name?.touched)"> Please enter name</span>
+  <br>
+  <br>
+  <input type="password" placeholder="password" formControlName="password">
+  <br>
+  <br>
+  <input type="email" placeholder="email" formControlName="email">
+  <button>submit</button>
+</form>
