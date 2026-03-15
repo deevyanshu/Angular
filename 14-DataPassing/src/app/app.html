@@ -1,0 +1,6 @@
+<h1>Pass Data to Child</h1>
+<app-user [user]="user" (getData)="getChildData($event)"></app-user>
+<select #selectedUser (change)="onSlectedUser(selectedUser.value)">
+  <option value="Anil">Anil</option>
+  <option value="Sam">Sam</option>
+</select>
