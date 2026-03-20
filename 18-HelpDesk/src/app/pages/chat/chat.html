@@ -1,0 +1,56 @@
+<div class="fixed top-0 left-0 right-0 mx-auto min-h-screen max-w-7xl grid grid-cols-1 md:grid-cols-[300px_minmax(0,1fr)] border-x">
+    <div>
+        <!-- sidebar-->
+        <aside class="hidden md:flex md:flex-col border-r">
+            <div class="p-3 flex items-center gap-2">
+                <button z-button zType="outline" zSize="icon" class="h-8 w-8 cursor-pointer">
+                    <lucide-icon [img]="Plus" class="h-4 w-4"></lucide-icon>
+                </button>
+                <div class="relative w-full">
+                    <input z-input class="h-9 pl-8 border w-full" placeholder="search chats..">
+                    <lucide-icon [img]="Search" class="h-4 w-4 pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground"></lucide-icon>
+                </div>
+            </div>
+            <hr>
+        </aside>
+    </div>
+
+    <section class="h-full border-l">
+        <!-- chat header-->
+        <div class="flex justify-between items-center gap-3 px-4 border-b">
+            <div class="flex gap-3">
+                <z-avatar zSrc="" zFallback="SB"></z-avatar>
+                <div class="leading-tight">
+                    <div class="text-sm font-medium">Liza support</div>
+                    <div class="text-xs text-muted-foreground">
+                        Online 
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button z-button zType="ghost" zSize="icon" class="h-8 w-8"><lucide-icon class="h-4 w-4" [img]="Search"></lucide-icon></button>
+                <button z-button zType="ghost" zSize="icon" class="h-8 w-8"><lucide-icon [img]="MoreVertical" class="h-4 w-4"></lucide-icon></button>
+            </div>
+        </div>
+        <!--chat area-->
+        <div class="scroll-area flex-1 h-[calc(100vh-150px)]">
+            <div class="mx-auto max-w-3xl px-6 py-6 space-y-6">
+                @for(mess of messages(); track mess.id){
+                  <app-message-bubble [key]="mess.id" [author]="mess.author" [at]="mess.at" [text]="mess.text"></app-message-bubble>  
+                }
+            </div>
+        </div>
+
+        <!--composer-->
+        <div class="border-t p-3 ">
+            <div class="mx-auto flex max-w-3xl items-center gap-3">
+                <input z-input [(ngModel)]="draft" class="flex-1 rounded-full" placeholder="write a message">
+                <button z-button zType="outline" (click)="sendMessage()" class="rounded-full px-5">
+                    <lucide-icon [img]="Send" class="mr-2 h-4 w-4"></lucide-icon>
+                </button>
+            </div>
+        </div>
+    </section>
+
+</div>
